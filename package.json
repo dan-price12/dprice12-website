@@ -1,0 +1,27 @@
+{
+  "name": "stc-website",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "cypress:open": "turbo run cypress:open",
+    "cypress:run": "turbo run cypress:run"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "eslint-config-custom": "workspace:*",
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@6.11.0"
+}

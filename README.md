@@ -1,20 +1,36 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Sandbox
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+This is my sandbox. It's for me to play around and build things.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## What's inside?
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+This repo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+### Apps and Packages
+
+- `apps`
+  - `web`: a [Next.js](https://nextjs.org/) app
+  - `e2e`: a [cypress](https://docs.cypress.io/) project
+- `packages`
+  - `ui`: a React component library
+  - `storybook`: a Storybook workshop
+  - `eslint-config-custom`: `eslint` configurations
+  - `tsconfig`: `tsconfig.json`s used throughout the monorepo
+
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+pnpm run build
+```
+
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```
+pnpm run dev
+```
