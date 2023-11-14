@@ -6,22 +6,40 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/material-icons": "^5.0.7",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/icons-material": "^5.14.14",
+    "@mui/material": "^5.14.14",
     "next": "^13.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "ui": "workspace:*"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "eslint-config-custom": "workspace:*",
-    "eslint": "7.32.0",
-    "tsconfig": "workspace:*",
+    "@storybook/addon-essentials": "7.5.3",
+    "@storybook/addon-interactions": "7.5.3",
+    "@storybook/addon-links": "7.5.3",
+    "@storybook/addon-onboarding": "1.0.8",
+    "@storybook/addon-themes": "7.5.3",
+    "@storybook/blocks": "7.5.3",
+    "@storybook/nextjs": "7.5.3",
+    "@storybook/react": "7.5.3",
+    "@storybook/testing-library": "0.2.2",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "eslint": "7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "eslint-plugin-storybook": "^0.6.15",
+    "storybook": "7.5.3",
+    "tsconfig": "workspace:*",
     "typescript": "^4.5.3"
   }
 }
