@@ -6,6 +6,7 @@ const Template = (args) => <Header {...args} />;
 export const HeaderTemplate = Template.bind({
     headerText: 'Salient Technology Consulting',
     abbreviatedHeaderText: 'STC',
+    homePage: {page: '/', name: 'Home'},
     pages: [
         {page: 'services', name: 'Services'},
         {page: 'about', name: 'About'},
@@ -18,6 +19,7 @@ HeaderTemplate.storyName = 'Header';
 HeaderTemplate.args = {
     headerText: 'Salient Technology Consulting',
     abbreviatedHeaderText: 'STC',
+    homePage: {page: '/', name: 'Home'},
     pages: [
         {page: 'services', name: 'Services'},
         {page: 'about', name: 'About'},
@@ -31,6 +33,7 @@ export default {
     argTypes: {
         headerText: 'Salient Technology Consulting',
         abbreviatedHeaderText: 'STC',
+        homePage: {page: '/', name: 'Home'},
         pages: [
             {page: 'services', name: 'Services'},
             {page: 'about', name: 'About'},

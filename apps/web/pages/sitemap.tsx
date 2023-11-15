@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function Web() {
-    return <div>Home</div>;
+    return <div>Sitemap</div>;
 }

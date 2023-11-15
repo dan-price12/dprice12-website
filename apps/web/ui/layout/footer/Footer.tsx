@@ -3,6 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 import {IPageNavigation} from '../interfaces/IPageNavigation';
 
 type FooterLinkProps = {
@@ -15,8 +16,6 @@ const FooterLink = (props: FooterLinkProps) => {
     return (
         <Typography
             variant='caption'
-            component='a'
-            href={page.page}
             sx={{
                 flexGrow: 1,
                 fontWeight: 700,
@@ -28,7 +27,9 @@ const FooterLink = (props: FooterLinkProps) => {
                 justifyContent: 'center'
             }}
         >
-            &nbsp;| {page.name}
+            <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                &nbsp;| {page.name}
+            </Link>
         </Typography>
     );
 };

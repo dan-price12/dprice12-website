@@ -9,17 +9,19 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 import {IPageNavigation} from '../interfaces/IPageNavigation';
 import {Logo, LogoSize} from '../logo/Logo';
 
 type HeaderProps = {
     headerText: string;
     abbreviatedHeaderText: string;
+    homePage: IPageNavigation;
     pages: IPageNavigation[];
 };
 
 export const Header = (props: HeaderProps) => {
-    const {headerText, abbreviatedHeaderText, pages} = props;
+    const {headerText, abbreviatedHeaderText, homePage, pages} = props;
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
@@ -40,15 +42,15 @@ export const Header = (props: HeaderProps) => {
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
                     <Box sx={{mr: 2}}>
-                        <Logo size={LogoSize.Icon} />
+                        <Link href={homePage.page}>
+                            <Logo size={LogoSize.Icon} />
+                        </Link>
                     </Box>
 
                     {/* XS screen size */}
                     <Typography
                         variant='h5'
                         noWrap
-                        component='a'
-                        href='#app-bar-with-responsive-menu'
                         sx={{
                             mr: 2,
                             display: {xs: 'flex', sm: 'none'},
@@ -62,14 +64,14 @@ export const Header = (props: HeaderProps) => {
                             justifyContent: 'center'
                         }}
                     >
-                        {abbreviatedHeaderText}
+                        <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                            {abbreviatedHeaderText}
+                        </Link>
                     </Typography>
                     {/* SM screen size */}
                     <Typography
                         variant='h6'
                         noWrap
-                        component='a'
-                        href='#app-bar-with-responsive-menu'
                         sx={{
                             mr: 2,
                             display: {xs: 'none', sm: 'flex'},
@@ -83,7 +85,9 @@ export const Header = (props: HeaderProps) => {
                             justifyContent: 'right'
                         }}
                     >
-                        {headerText}
+                        <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                            {headerText}
+                        </Link>
                     </Typography>
 
                     {/* XS screen size */}
@@ -118,7 +122,9 @@ export const Header = (props: HeaderProps) => {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page.page} onClick={() => handlePageNavigationClick(page.page)}>
-                                    <Typography textAlign='center'>{page.name}</Typography>
+                                    <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                                        {page.name}
+                                    </Link>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -126,13 +132,11 @@ export const Header = (props: HeaderProps) => {
                     {/* MD screen size */}
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, justifyContent: 'right'}}>
                         {pages.map((page) => (
-                            <Button
-                                key={page.page}
-                                onClick={() => handlePageNavigationClick(page.page)}
-                                sx={{my: 2, color: 'white', display: 'block'}}
-                            >
-                                {page.name}
-                            </Button>
+                            <Link key={page.page} href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                                <Button onClick={() => handlePageNavigationClick(page.page)} sx={{my: 2, color: 'white', display: 'block'}}>
+                                    {page.name}
+                                </Button>
+                            </Link>
                         ))}
                     </Box>
                 </Toolbar>
