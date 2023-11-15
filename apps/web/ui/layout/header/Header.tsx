@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,8 +9,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import {IPageNavigation} from '../interfaces/IPageNavigation';
 import {Logo, LogoSize} from '../logo/Logo';
-import {IPageNavigation} from './IPageNavigation';
 
 type HeaderProps = {
     headerText: string;

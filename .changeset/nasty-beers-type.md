@@ -1,0 +1,5 @@
+---
+'web': patch
+---
+
+Implemented footer.
