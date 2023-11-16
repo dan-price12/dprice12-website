@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {ThemeProvider, useMediaQuery} from '@mui/material';
+import {Container, CssBaseline, ThemeProvider, useMediaQuery} from '@mui/material';
 import {useAtom} from 'jotai';
 import {themeModeAtom} from '../storage/themeModeStorage';
 import {ThemeMode} from '../ui/enum/ThemeMode';
@@ -44,6 +44,7 @@ export default function Layout(props: LayoutProps) {
 
     return (
         <ThemeProvider theme={theme}>
+            <CssBaseline />
             <Header
                 headerText={headerText}
                 abbreviatedHeaderText={abbreviatedHeaderText}
@@ -52,7 +53,7 @@ export default function Layout(props: LayoutProps) {
                 themeMode={themeMode}
                 onThemeModeClick={handleThemeModeClick}
             />
-            {children}
+            <Container maxWidth='xl'>{children}</Container>
             <Footer footerText={footerText} pages={footerPages} />
         </ThemeProvider>
     );

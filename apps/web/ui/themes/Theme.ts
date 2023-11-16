@@ -13,6 +13,22 @@ export const getTheme = (themeMode: ThemeMode) => {
             h6: {
                 fontFamily: 'good-times'
             }
+        },
+        components: {
+            MuiPaper: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: themeMode === ThemeMode.Dark ? '#1A2027' : '#fff'
+                    }
+                }
+            },
+            MuiAppBar: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: themeMode === ThemeMode.Dark ? '#121212' : '#626464'
+                    }
+                }
+            }
         }
     });
 };

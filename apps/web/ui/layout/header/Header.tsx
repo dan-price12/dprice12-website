@@ -65,7 +65,7 @@ export const Header = (props: HeaderProps) => {
                             textDecoration: 'none',
                             whiteSpace: 'normal',
                             textAlign: 'center',
-                            justifyContent: 'center'
+                            justifyContent: 'left'
                         }}
                     >
                         <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
@@ -86,7 +86,7 @@ export const Header = (props: HeaderProps) => {
                             textDecoration: 'none',
                             whiteSpace: 'normal',
                             textAlign: 'center',
-                            justifyContent: 'right'
+                            justifyContent: 'left'
                         }}
                     >
                         <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
