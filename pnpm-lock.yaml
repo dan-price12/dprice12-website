@@ -52,6 +52,7 @@ importers:
       eslint: 7.32.0
       eslint-config-custom: workspace:*
       eslint-plugin-storybook: ^0.6.15
+      jotai: ^2.5.1
       next: ^13.1.1
       react: 18.2.0
       react-dom: 18.2.0
@@ -65,6 +66,7 @@ importers:
       '@fontsource/roboto': 5.0.8
       '@mui/icons-material': 5.14.14_273c64457f79cc560e07962f1f20129d
       '@mui/material': 5.14.14_3cbe8809c2eb830573b955d3f0f3b3ed
+      jotai: 2.5.1_7b08a519b01d2cb6137dcbdb0391a2df
       next: 13.1.6_7a6ce7c903601ca00e748dc002e0c97f
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -9206,6 +9208,22 @@ packages:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
     dev: true
+
+  /jotai/2.5.1_7b08a519b01d2cb6137dcbdb0391a2df:
+    resolution: {integrity: sha512-vanPCCSuHczUXNbVh/iUunuMfrWRL4FdBtAbTRmrfqezJcKb8ybBTg8iivyYuUHapjcDETyJe1E4inlo26bVHA==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.0.28
+      react: 18.2.0
+    dev: false
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}

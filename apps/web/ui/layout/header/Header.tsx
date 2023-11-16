@@ -1,4 +1,5 @@
 import React from 'react';
+import {Brightness3, LightMode} from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
+import {ThemeMode} from '../../enum/ThemeMode';
 import {IPageNavigation} from '../interfaces/IPageNavigation';
 import {Logo, LogoSize} from '../logo/Logo';
 
@@ -18,10 +20,12 @@ type HeaderProps = {
     abbreviatedHeaderText: string;
     homePage: IPageNavigation;
     pages: IPageNavigation[];
+    themeMode: ThemeMode;
+    onThemeModeClick: () => void;
 };
 
 export const Header = (props: HeaderProps) => {
-    const {headerText, abbreviatedHeaderText, homePage, pages} = props;
+    const {headerText, abbreviatedHeaderText, homePage, pages, themeMode, onThemeModeClick} = props;
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
@@ -139,6 +143,9 @@ export const Header = (props: HeaderProps) => {
                             </Link>
                         ))}
                     </Box>
+                    <IconButton sx={{ml: 1}} onClick={onThemeModeClick} color='inherit'>
+                        {themeMode === ThemeMode.Dark ? <LightMode /> : <Brightness3 />}
+                    </IconButton>
                 </Toolbar>
             </Container>
         </AppBar>

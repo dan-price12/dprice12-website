@@ -1,5 +1,7 @@
-import {useMemo} from 'react';
+import {useEffect} from 'react';
 import {ThemeProvider, useMediaQuery} from '@mui/material';
+import {useAtom} from 'jotai';
+import {themeModeAtom} from '../storage/themeModeStorage';
 import {ThemeMode} from '../ui/enum/ThemeMode';
 import {Footer} from '../ui/layout/footer/Footer';
 import {Header} from '../ui/layout/header/Header';
@@ -11,9 +13,14 @@ type LayoutProps = {
 
 export default function Layout(props: LayoutProps) {
     const {children} = props;
+    const [themeMode, setThemeMode] = useAtom(themeModeAtom);
 
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-    const themeMode = useMemo(() => (prefersDarkMode ? ThemeMode.Dark : ThemeMode.Light), [prefersDarkMode]);
+
+    useEffect(() => {
+        setThemeMode(prefersDarkMode ? ThemeMode.Dark : ThemeMode.Light);
+    }, [prefersDarkMode, setThemeMode]);
+
     const theme = getTheme(themeMode);
 
     const headerText = 'Salient Technology Consulting';
@@ -31,9 +38,20 @@ export default function Layout(props: LayoutProps) {
         {page: 'sitemap', name: 'Sitemap'}
     ];
 
+    const handleThemeModeClick = () => {
+        setThemeMode(themeMode === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark);
+    };
+
     return (
         <ThemeProvider theme={theme}>
-            <Header headerText={headerText} abbreviatedHeaderText={abbreviatedHeaderText} homePage={homePage} pages={headerPages} />
+            <Header
+                headerText={headerText}
+                abbreviatedHeaderText={abbreviatedHeaderText}
+                homePage={homePage}
+                pages={headerPages}
+                themeMode={themeMode}
+                onThemeModeClick={handleThemeModeClick}
+            />
             {children}
             <Footer footerText={footerText} pages={footerPages} />
         </ThemeProvider>
