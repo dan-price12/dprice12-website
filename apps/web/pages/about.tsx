@@ -1,53 +1,17 @@
 import React from 'react';
-import {Box, Container, Paper, Typography} from '@mui/material';
+import {Container, Paper, Typography} from '@mui/material';
+import {SubHeader} from '../ui/page-elements/subheader/SubHeader';
 
 export default function Web() {
     const headerText = 'About Us';
-    const headerSubText = 'Technology Consulting, Cloud Solutions, Software Development, Business Intelligence and Analytics';
-    const bodyText =
-        'Founded in 2023, Salient Technology Consulting is the premier provider of technology consulting and professional services. Our primary aim is to deliver exceptionally high-quality technology solutions that enable our clients to maximize their technology return on investment. With more than a decade of experience in delivering enterprise-scale, full-stack technology solutions to clients across the globe, you can count on us to go above and beyond to ensure your vision is fully realized.';
+    const headerSubText = 'Full-spectrum technology solutions custom-tailored to your exact business needs';
+    const bodyText = `Established in 2023, Salient Technology Consulting stands as the foremost provider of top-tier technology consulting and professional services. Backed by over a decade of expertise in delivering comprehensive, enterprise-scale, full-stack technology solutions to clients worldwide, we pride ourselves on going above and beyond to actualize your vision. At the heart of our mission lies the commitment to deliver exceptionally high-quality technology solutions, empowering our clients to optimize their return on technology investment. We ensure that this optimization is paired with unwavering confidence in the stability and reliability of the solutions we provide. Your success is not just a goal; it's a commitment we uphold, offering cutting-edge technology solutions that blend performance with the utmost dependability. Trust us to not only meet but exceed your expectations, as we navigate the ever-evolving landscape of technology with dedication and precision.`;
 
     return (
         <>
-            <Box>
-                <Typography
-                    variant='h3'
-                    component='div'
-                    sx={{
-                        mt: 5,
-                        mb: 1,
-                        flexGrow: 1,
-                        fontWeight: 500,
-                        letterSpacing: '.3rem',
-                        color: 'inherit',
-                        textDecoration: 'none',
-                        whiteSpace: 'normal',
-                        textAlign: 'center',
-                        justifyContent: 'center'
-                    }}
-                >
-                    {headerText}
-                </Typography>
-                <Typography
-                    variant='caption'
-                    component='div'
-                    sx={{
-                        mb: 5,
-                        flexGrow: 1,
-                        fontWeight: 500,
-                        letterSpacing: '.3rem',
-                        color: 'inherit',
-                        textDecoration: 'none',
-                        whiteSpace: 'normal',
-                        textAlign: 'center',
-                        justifyContent: 'center'
-                    }}
-                >
-                    {headerSubText}
-                </Typography>
-            </Box>
+            <SubHeader headerText={headerText} headerSubText={headerSubText} />
             <Container maxWidth='md'>
-                <Paper sx={{mx: 5, mb: 3, px: 2, py: 1}} elevation={5}>
+                <Paper sx={{px: 2, py: 2}} elevation={5}>
                     <Typography
                         variant='body2'
                         component='div'
