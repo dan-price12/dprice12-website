@@ -11,7 +11,7 @@ export default function Web() {
         <>
             <SubHeader headerText={headerText} headerSubText={headerSubText} />
             <Container maxWidth='md'>
-                <Paper sx={{px: 2, py: 2}} elevation={5}>
+                <Paper sx={{px: 2, py: 2, mb: 4, mt: 6}} elevation={5}>
                     <Typography
                         variant='body2'
                         component='div'

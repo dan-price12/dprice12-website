@@ -1,14 +1,16 @@
+import React from 'react';
 import {Grid, Paper, Typography} from '@mui/material';
 import {styled} from '@mui/material/styles';
 
-type ServiceGridItemProps = {
-    serviceName: string;
-    serviceDescription: string;
-    serviceIcon: React.ReactNode;
+type GridItemPaperProps = {
+    title: string;
+    description?: string;
+    descriptionRaw?: React.ReactNode;
+    icon?: React.ReactNode;
 };
 
-export default function ServiceGridItem(props: ServiceGridItemProps) {
-    const {serviceName, serviceDescription, serviceIcon} = props;
+export default function GridItemPaper(props: GridItemPaperProps) {
+    const {title, description, descriptionRaw, icon} = props;
 
     const StyledPaper = styled(Paper)(({theme}) => ({
         ...theme.typography.body2,
@@ -28,9 +30,9 @@ export default function ServiceGridItem(props: ServiceGridItemProps) {
     return (
         <Grid item xs={12} md={6} justifyContent={'center'}>
             <StyledPaper elevation={5}>
-                <StyledTypography>{serviceName}</StyledTypography>
-                {serviceIcon}
-                <Typography variant='body2'>{serviceDescription}</Typography>
+                <StyledTypography>{title}</StyledTypography>
+                {icon && icon}
+                <Typography variant='body2'>{descriptionRaw ?? description}</Typography>
             </StyledPaper>
         </Grid>
     );

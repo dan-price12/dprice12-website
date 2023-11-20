@@ -28,7 +28,7 @@ const FooterLink = (props: FooterLinkProps) => {
             }}
         >
             <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
-                &nbsp;| {page.name}
+                {` | ${page.name}`}
             </Link>
         </Typography>
     );
