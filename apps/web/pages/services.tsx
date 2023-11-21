@@ -11,7 +11,7 @@ import ProductIteration from '../ui/illustrations/undraw/ProductIteration';
 import Programming from '../ui/illustrations/undraw/Programming';
 import {SubHeader} from '../ui/page-elements/subheader/SubHeader';
 
-export default function Web() {
+export default function Services() {
     const headerText = 'Services';
     const headerSubText = 'Consulting, Analysis, Software Development, Cloud Solutions, BI & Analytics, Automation & DevOps';
 

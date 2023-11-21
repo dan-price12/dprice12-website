@@ -6,7 +6,7 @@ import BusinessDecisions from '../ui/illustrations/undraw/BusinessDecisions';
 import ConnectedWorld from '../ui/illustrations/undraw/ConnectedWorld';
 import {SubHeader} from '../ui/page-elements/subheader/SubHeader';
 
-export default function Web() {
+export default function Home() {
     const headerText = 'Technology Consulting & Custom Development';
     const headerSubText = 'Proven expertise to fuel growth through technology';
     const bodyText = `At Salient Technology Consulting, we redefine the landscape of technology services as a full-spectrum provider. We are here to assist during every phase of your journey - from formulating a comprehensive technical strategy, to planning and decision making, and through implementation, deployment, and testing. We transcend the role of a typical service provider, aspiring to be your strategic partner. Our commitment is to stand by you, understanding your unique needs, and contributing strategically to your success. Choose Salient Technology Consulting for a partnership that extends far beyond the ordinary.`;

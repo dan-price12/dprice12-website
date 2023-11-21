@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function Web() {
+export default function Contact() {
     return <div>Contact</div>;
 }

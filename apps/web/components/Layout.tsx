@@ -35,7 +35,7 @@ export default function Layout(props: LayoutProps) {
     const footerText = '© 2023 Salient Technology Consulting LLC | All rights reserved.';
     const footerPages = [
         {page: 'privacy', name: 'Privacy Policy'},
-        {page: 'sitemap', name: 'Sitemap'}
+        {page: 'sitemap.xml', name: 'Sitemap'}
     ];
 
     const handleThemeModeClick = () => {
