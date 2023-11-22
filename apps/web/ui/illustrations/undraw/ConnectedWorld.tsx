@@ -140,8 +140,8 @@ export default function ConnectedWorld() {
                     transform='translate(-11.69692 -13.01074)'
                     fill='none'
                     stroke='#6c63ff'
-                    stroke-miterlimit='10'
-                    stroke-width='2'
+                    strokeMiterlimit='10'
+                    strokeWidth='2'
                     opacity='0.8'
                 />
                 <path
@@ -149,8 +149,8 @@ export default function ConnectedWorld() {
                     transform='translate(-11.69692 -13.01074)'
                     fill='none'
                     stroke='#6c63ff'
-                    stroke-miterlimit='10'
-                    stroke-width='2'
+                    strokeMiterlimit='10'
+                    strokeWidth='2'
                     opacity='0.8'
                 />
                 <circle cx='214.07353' cy='310.64667' r='11.96804' fill='#626464' />
