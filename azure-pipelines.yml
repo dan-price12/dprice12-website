@@ -1,1 +1,44 @@
+name: Build and Deploy to Azure Static Web Apps
 
+pr:
+    branches:
+        include:
+            - main
+trigger:
+    branches:
+        include:
+            - main
+
+variables:
+    base_app_location: '/apps/web'
+
+jobs:
+    - job: build_and_deploy_job
+      displayName: Build and Deploy Job
+      condition: or(eq(variables['Build.Reason'], 'Manual'),or(eq(variables['Build.Reason'], 'PullRequest'),eq(variables['Build.Reason'], 'IndividualCI')))
+      pool:
+          vmImage: ubuntu-latest
+      variables:
+          - group: Azure-Static-Web-Apps-white-field-018c4140f-variable-group
+
+      steps:
+          - checkout: self
+            submodules: true
+            displayName: 'Checkout Repository'
+          - task: AzureStaticWebApp@0
+            inputs:
+                azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_FIELD_018C4140F)
+                # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+                app_location: '$(base_app_location)' # App source code path
+                api_location: '' # Api source code path - optional
+                output_location: '' # Built app content directory - optional
+                verbose: true
+            env:
+                PRE_BUILD_COMMAND: 'npm install -g pnpm && pnpm install'
+                CUSTOM_BUILD_COMMAND: 'pnpm -w run build && cp -r ./.next/standalone$(base_app_location)/. ./.next/standalone  && rm -rf ./.next/standalone/apps'
+                RUN_BUILD_COMMAND: 'pnpm -w run build && cp -r ./.next/standalone$(base_app_location)/. ./.next/standalone  && rm -rf ./.next/standalone/apps'
+                DISABLE_RUBY_BUILD: true
+                DISABLE_HUGO_BUILD: true
+                DISABLE_JAVA_BUILD: true
+                DISABLE_GOLANG_BUILD: true
+            displayName: 'Deploy to Azure Static Web Apps'

@@ -7,8 +7,8 @@
         "packages/*"
     ],
     "scripts": {
-        "build": "turbo run build",
         "dev": "turbo run dev",
+        "build": "turbo run build",
         "lint": "turbo run lint",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
         "cypress:open": "turbo run cypress:open",
@@ -16,7 +16,7 @@
         "storybook": "turbo run storybook --parallel"
     },
     "devDependencies": {
-        "@changesets/cli": "^2.26.0",
+        "@changesets/cli": "^2.26.2",
         "eslint-config-custom": "workspace:*",
         "prettier": "latest",
         "turbo": "latest"
@@ -25,5 +25,5 @@
         "npm": ">=7.0.0",
         "node": ">=14.0.0"
     },
-    "packageManager": "pnpm@6.11.0"
+    "packageManager": "pnpm@8.11.0"
 }
