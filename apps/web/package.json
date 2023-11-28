@@ -11,10 +11,12 @@
         "build-storybook": "storybook build"
     },
     "dependencies": {
+        "@azure/identity": "^4.0.0",
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
         "@fontsource/material-icons": "^5.0.7",
         "@fontsource/roboto": "^5.0.8",
+        "@microsoft/microsoft-graph-client": "^3.0.7",
         "@mui/icons-material": "^5.14.14",
         "@mui/material": "^5.14.14",
         "jotai": "^2.5.1",

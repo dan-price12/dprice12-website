@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, AlertTitle, Button, TextField} from '@mui/material';
+import {Alert, AlertTitle, Button, CircularProgress, TextField} from '@mui/material';
 import {useForm} from 'react-hook-form';
 import useContactForm, {ContactFormData} from './useContactForm';
 
@@ -10,7 +10,7 @@ export default function ContactForm() {
         formState: {errors}
     } = useForm<ContactFormData>();
 
-    const {requestIsComplete, requestWasSuccessful, handleContactFormSubmit} = useContactForm();
+    const {loading, requestIsComplete, requestWasSuccessful, handleContactFormSubmit} = useContactForm();
 
     const showSuccessAlert = requestIsComplete && requestWasSuccessful;
     const showErrorAlert = requestIsComplete && !requestWasSuccessful;
@@ -74,8 +74,8 @@ export default function ContactForm() {
                     error={!!errors.message}
                     helperText={errors.message?.message}
                 />
-                <Button type='submit' variant='contained' color='primary' fullWidth>
-                    Submit
+                <Button type='submit' variant='contained' color='primary' disabled={loading} fullWidth>
+                    {loading ? <CircularProgress size={24} /> : 'Submit'}
                 </Button>
             </form>
             {showSuccessAlert && <SuccessAlert />}
