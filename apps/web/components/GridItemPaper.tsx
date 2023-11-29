@@ -1,6 +1,6 @@
 import React from 'react';
-import {Grid, Paper, Typography} from '@mui/material';
-import {styled} from '@mui/material/styles';
+import {Grid, Paper, Typography, useMediaQuery} from '@mui/material';
+import {styled, useTheme} from '@mui/material/styles';
 
 type GridItemPaperProps = {
     title: string;
@@ -12,12 +12,15 @@ type GridItemPaperProps = {
 export default function GridItemPaper(props: GridItemPaperProps) {
     const {title, description, descriptionRaw, icon} = props;
 
+    const currentTheme = useTheme();
+    const isMediumOrHigher = useMediaQuery(currentTheme.breakpoints.up('md'));
+
     const StyledPaper = styled(Paper)(({theme}) => ({
         ...theme.typography.body2,
         padding: theme.spacing(2),
         maxWidth: 450,
         color: theme.palette.text.primary,
-        height: 550,
+        height: isMediumOrHigher ? 555 : 'auto',
         margin: 'auto'
     }));
 

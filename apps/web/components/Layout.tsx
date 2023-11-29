@@ -24,7 +24,7 @@ export default function Layout(props: LayoutProps) {
     const theme = getTheme(themeMode);
 
     const headerText = 'Salient Technology Consulting';
-    const abbreviatedHeaderText = 'STC';
+    const abbreviatedHeaderText = 'Salient';
     const homePage = {page: '/', name: 'Home'};
     const headerPages = [
         {page: 'services', name: 'Services'},

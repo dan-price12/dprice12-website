@@ -8,14 +8,12 @@ This repo uses [pnpm](https://pnpm.io) as a package manager. It includes the fol
 
 ### Apps and Packages
 
-- `apps`
-  - `web`: a [Next.js](https://nextjs.org/) app
-  - `e2e`: a [cypress](https://docs.cypress.io/) project
-- `packages`
-  - `ui`: a React component library
-  - `storybook`: a Storybook workshop
-  - `eslint-config-custom`: `eslint` configurations
-  - `tsconfig`: `tsconfig.json`s used throughout the monorepo
+-   `apps`
+    -   `web`: a [Next.js](https://nextjs.org/) app
+    -   `e2e`: a [cypress](https://docs.cypress.io/) project
+-   `packages`
+    -   `eslint-config-custom`: `eslint` configurations
+    -   `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
