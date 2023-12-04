@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Container, Paper, Typography} from '@mui/material';
 import {styled} from '@mui/material/styles';
 import {SubHeader} from '../ui/page-elements/subheader/SubHeader';
 
 export default function PrivacyPolicy() {
+    const [hostname, setHostname] = useState('');
+
+    useEffect(() => {
+        setHostname(typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : 'salienttechconsulting.com');
+    }, []);
+
     const headerText = 'Privacy Policy';
     const headerSubText = 'Salient Technology Consulting LLC Privacy Policy';
 
@@ -30,9 +36,9 @@ export default function PrivacyPolicy() {
                     <BodyHeaderTypography>Privacy Policy</BodyHeaderTypography>
                     <BodyTypography>
                         {`
-Effective Date: September 21, 2023
+Effective Date: December 04, 2023
 
-Thank you for visiting www.stc-llc.org. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our website or services.
+Thank you for visiting www.${hostname}. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our website or services.
 
 `}
                     </BodyTypography>
@@ -90,8 +96,8 @@ By using our website, you consent to our Privacy Policy.
 We reserve the right to update or change our Privacy Policy at any time. Any changes will be posted on this page with the updated date.
 
 If you have any questions or concerns about our Privacy Policy, please contact us at `}
-                        <a href='mailto:info@stc-llc.org' style={{color: 'inherit'}}>
-                            info@stc-llc.org
+                        <a href={`mailto:info@${hostname}`} style={{color: 'inherit'}}>
+                            {`info@${hostname}`}
                         </a>
                         {`.`}
                     </BodyTypography>

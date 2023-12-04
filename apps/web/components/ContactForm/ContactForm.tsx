@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Alert, AlertTitle, Button, CircularProgress, TextField} from '@mui/material';
 import {useForm} from 'react-hook-form';
 import useContactForm, {ContactFormData} from './useContactForm';
 
 export default function ContactForm() {
+    const [hostname, setHostname] = useState('');
+
+    useEffect(() => {
+        setHostname(typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : 'salienttechconsulting.com');
+    }, []);
+
     const {
         register,
         handleSubmit,
@@ -29,8 +35,8 @@ export default function ContactForm() {
             <Alert severity='error' sx={{mt: 2}}>
                 <AlertTitle>Error</AlertTitle>
                 {`There was an error processing your contact information — please try again or email us directly at `}
-                <a href='mailto:info@stc-llc.org' style={{color: 'inherit'}}>
-                    info@stc-llc.org
+                <a href={`mailto:info@${hostname}`} style={{color: 'inherit'}}>
+                    {`info@${hostname}`}
                 </a>
                 {`.`}
             </Alert>
