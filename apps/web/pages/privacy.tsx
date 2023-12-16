@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Paper, Typography} from '@mui/material';
 import {styled} from '@mui/material/styles';
+import Head from 'next/head';
 import {SubHeader} from '../ui/page-elements/subheader/SubHeader';
 
 export default function PrivacyPolicy() {
@@ -10,6 +11,8 @@ export default function PrivacyPolicy() {
         setHostname(typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : 'salienttechconsulting.com');
     }, []);
 
+    const titleText = 'Privacy Policy';
+    const metaDescriptionText = `Salient Technology Consulting's Privacy Policy.`;
     const headerText = 'Privacy Policy';
     const headerSubText = 'Salient Technology Consulting LLC Privacy Policy';
 
@@ -30,6 +33,10 @@ export default function PrivacyPolicy() {
 
     return (
         <>
+            <Head>
+                <title>{titleText}</title>
+                <meta name='description' content={metaDescriptionText} />
+            </Head>
             <SubHeader headerText={headerText} headerSubText={headerSubText} />
             <Container maxWidth='md'>
                 <Paper sx={{px: 2, py: 2, mb: 4, mt: 6}} elevation={5}>

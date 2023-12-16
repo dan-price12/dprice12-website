@@ -20,7 +20,7 @@ export const SubHeader = (props: SubHeaderProps) => {
                 mb={1}
                 mt={5}
                 textAlign='center'
-                variant='h3'
+                variant='h1'
                 whiteSpace='normal'
                 sx={{
                     textDecoration: 'none'

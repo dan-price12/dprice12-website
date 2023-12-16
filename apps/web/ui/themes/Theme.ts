@@ -7,6 +7,12 @@ export const getTheme = (themeMode: ThemeMode) => {
             mode: themeMode
         },
         typography: {
+            h1: {
+                fontWeight: 400,
+                fontSize: '3rem',
+                lineHeigh: 1.167,
+                letterSpacing: '0em'
+            },
             h5: {
                 fontFamily: 'good-times'
             },

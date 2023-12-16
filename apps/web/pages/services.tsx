@@ -2,21 +2,30 @@ import * as React from 'react';
 import {Container} from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import GridItemPaper from '../components/GridItemPaper';
-import AllTheData from '../ui/illustrations/undraw/AllTheData';
-import CloudFiles from '../ui/illustrations/undraw/CloudFiles';
-import CohortAnalysis from '../ui/illustrations/undraw/CohortAnalysis';
-import EngineeringTeam from '../ui/illustrations/undraw/EngineeringTeam';
-import ProductIteration from '../ui/illustrations/undraw/ProductIteration';
-import Programming from '../ui/illustrations/undraw/Programming';
 import {SubHeader} from '../ui/page-elements/subheader/SubHeader';
 
 export default function Services() {
+    const titleText = 'Services';
+    const metaDescriptionText = `Salient Technology Consulting's services include Consulting, Analysis, Software Development, Cloud Solutions, BI & Analytics, Automation & DevOps.`;
     const headerText = 'Services';
     const headerSubText = 'Consulting, Analysis, Software Development, Cloud Solutions, BI & Analytics, Automation & DevOps';
 
+    const AllTheData = dynamic(() => import('../ui/illustrations/undraw/AllTheData'));
+    const CloudFiles = dynamic(() => import('../ui/illustrations/undraw/CloudFiles'));
+    const CohortAnalysis = dynamic(() => import('../ui/illustrations/undraw/CohortAnalysis'));
+    const EngineeringTeam = dynamic(() => import('../ui/illustrations/undraw/EngineeringTeam'));
+    const ProductIteration = dynamic(() => import('../ui/illustrations/undraw/ProductIteration'));
+    const Programming = dynamic(() => import('../ui/illustrations/undraw/Programming'));
+
     return (
         <>
+            <Head>
+                <title>{titleText}</title>
+                <meta name='description' content={metaDescriptionText} />
+            </Head>
             <SubHeader headerText={headerText} headerSubText={headerSubText} />
             <Container maxWidth='md'>
                 <Box flexGrow={1} overflow='hidden' px={1} pt={1} pb={4}>

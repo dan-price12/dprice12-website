@@ -11,8 +11,8 @@ import Layout from '../components/Layout';
 export default function App({Component, pageProps}) {
     return (
         <>
-            <Script src='https://www.googletagmanager.com/gtag/js?id=G-TTZRL1TPST' strategy='afterInteractive' />
-            <Script id='google-analytics' strategy='afterInteractive'>
+            <Script async src='https://www.googletagmanager.com/gtag/js?id=G-TTZRL1TPST' strategy='afterInteractive' />
+            <Script async id='google-analytics' strategy='afterInteractive'>
                 {`
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){window.dataLayer.push(arguments);}

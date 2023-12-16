@@ -2,10 +2,12 @@
     font-family: 'good-times-rg';
     src: url('./good-times-rg.otf');
     src: url('./good-times-rg.otf') format('opentype');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'good-times';
     src: url('./good-times.otf');
     src: url('./good-times.otf') format('opentype');
+    font-display: swap;
 }

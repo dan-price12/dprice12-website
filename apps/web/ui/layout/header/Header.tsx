@@ -46,7 +46,7 @@ export const Header = (props: HeaderProps) => {
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
                     <Box sx={{mr: 2}}>
-                        <Link href={homePage.page}>
+                        <Link href={homePage.page} aria-label='Home'>
                             <Logo size={LogoSize.Icon} />
                         </Link>
                     </Box>
@@ -143,7 +143,12 @@ export const Header = (props: HeaderProps) => {
                             </Link>
                         ))}
                     </Box>
-                    <IconButton sx={{ml: 1}} onClick={onThemeModeClick} color='inherit'>
+                    <IconButton
+                        sx={{ml: 1}}
+                        onClick={onThemeModeClick}
+                        color='inherit'
+                        aria-label={themeMode === ThemeMode.Dark ? 'Light mode' : 'Dark mode'}
+                    >
                         {themeMode === ThemeMode.Dark ? <LightMode /> : <Brightness3 />}
                     </IconButton>
                 </Toolbar>
