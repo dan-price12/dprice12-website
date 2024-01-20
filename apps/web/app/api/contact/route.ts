@@ -1,16 +1,15 @@
 import {ClientSecretCredential} from '@azure/identity';
 import {Client} from '@microsoft/microsoft-graph-client';
 import {TokenCredentialAuthenticationProvider} from '@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials';
-import {ContactFormData} from '../../components/ContactForm/useContactForm';
-import type {NextApiRequest, NextApiResponse} from 'next';
+import {ContactFormData} from '../../../components/ContactForm/useContactForm';
 
 function sanitizeString(input: string) {
     input = input.replace(/[^a-z0-9áéíóúñü@ \.,_-]/gim, '');
     return input.trim();
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const requestBody: ContactFormData = req.body;
+export async function POST(request: Request) {
+    const requestBody: ContactFormData = await request.json();
 
     const name = sanitizeString(requestBody.name);
     const company = sanitizeString(requestBody.company ?? '');
@@ -57,5 +56,5 @@ Message: ${message}`
 
     await graphClient.api(`/users/${sourceEmailId}/sendMail`).post(sendMail);
 
-    res.status(200).json({});
+    return new Response(null, {status: 200});
 }

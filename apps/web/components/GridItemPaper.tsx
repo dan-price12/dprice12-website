@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import {Grid, Paper, Typography, useMediaQuery} from '@mui/material';
 import {styled, useTheme} from '@mui/material/styles';

@@ -4,11 +4,15 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/material-icons';
 import '../ui/fonts/fonts.css';
-import {Provider} from 'jotai';
+import {AppRouterCacheProvider} from '@mui/material-nextjs/v13-appRouter';
 import Script from 'next/script';
-import Layout from '../components/Layout';
+import {Providers} from '../components/Providers';
 
-export default function App({Component, pageProps}) {
+type RootLayoutProps = {children: React.ReactNode};
+
+export default function RootLayout(props: RootLayoutProps) {
+    const {children} = props;
+
     return (
         <>
             <Script async src='https://www.googletagmanager.com/gtag/js?id=G-TTZRL1TPST' strategy='afterInteractive' />
@@ -21,11 +25,13 @@ export default function App({Component, pageProps}) {
                     gtag('config', 'G-TTZRL1TPST');
                 `}
             </Script>
-            <Provider>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </Provider>
+            <html lang='en'>
+                <body>
+                    <Providers>
+                        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+                    </Providers>
+                </body>
+            </html>
         </>
     );
 }

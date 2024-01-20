@@ -2,30 +2,29 @@ import * as React from 'react';
 import {Container} from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import {Metadata} from 'next';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import GridItemPaper from '../components/GridItemPaper';
-import {SubHeader} from '../ui/page-elements/subheader/SubHeader';
+import GridItemPaper from '../../components/GridItemPaper';
+import {SubHeader} from '../../ui/page-elements/subheader/SubHeader';
+
+export const metadata: Metadata = {
+    title: 'Services',
+    description: `Salient Technology Consulting's services include Consulting, Analysis, Software Development, Cloud Solutions, Business Intelligence & Analytics, Automation & DevOps.`
+};
 
 export default function Services() {
-    const titleText = 'Services';
-    const metaDescriptionText = `Salient Technology Consulting's services include Consulting, Analysis, Software Development, Cloud Solutions, BI & Analytics, Automation & DevOps.`;
     const headerText = 'Services';
     const headerSubText = 'Consulting, Analysis, Software Development, Cloud Solutions, BI & Analytics, Automation & DevOps';
 
-    const AllTheData = dynamic(() => import('../ui/illustrations/undraw/AllTheData'));
-    const CloudFiles = dynamic(() => import('../ui/illustrations/undraw/CloudFiles'));
-    const CohortAnalysis = dynamic(() => import('../ui/illustrations/undraw/CohortAnalysis'));
-    const EngineeringTeam = dynamic(() => import('../ui/illustrations/undraw/EngineeringTeam'));
-    const ProductIteration = dynamic(() => import('../ui/illustrations/undraw/ProductIteration'));
-    const Programming = dynamic(() => import('../ui/illustrations/undraw/Programming'));
+    const AllTheData = dynamic(() => import('../../ui/illustrations/undraw/AllTheData'));
+    const CloudFiles = dynamic(() => import('../../ui/illustrations/undraw/CloudFiles'));
+    const CohortAnalysis = dynamic(() => import('../../ui/illustrations/undraw/CohortAnalysis'));
+    const EngineeringTeam = dynamic(() => import('../../ui/illustrations/undraw/EngineeringTeam'));
+    const ProductIteration = dynamic(() => import('../../ui/illustrations/undraw/ProductIteration'));
+    const Programming = dynamic(() => import('../../ui/illustrations/undraw/Programming'));
 
     return (
         <>
-            <Head>
-                <title>{titleText}</title>
-                <meta name='description' content={metaDescriptionText} />
-            </Head>
             <SubHeader headerText={headerText} headerSubText={headerSubText} />
             <Container maxWidth='md'>
                 <Box flexGrow={1} overflow='hidden' px={1} pt={1} pb={4}>
@@ -47,7 +46,7 @@ export default function Services() {
                         />
                         <GridItemPaper
                             title='Cloud Solutions'
-                            description={`Use our expertise to transform your infrastructure into a streamlined powerhouse while optimizing technology costs with the dynamic potential of modern cloud computing. Whether it's architecting cloud infrastructure, seamlessly migrating existing solutions, or creating cloud-native applications, we've got you covered. While our specialization is in Microsoft Azure, our proficiency extends seamlessly to other public, private, and hybrid cloud environments. Elevate your operations and cost-efficiency by letting us guide your journey into the future of cloud computing.`}
+                            description={`Use our expertise to transform your infrastructure into a streamlined powerhouse while optimizing technology costs with the dynamic potential of modern cloud computing. Whether it's architecting cloud infrastructure, seamlessly migrating existing solutions, or creating cloud-native applications, we've got you covered. While we are certified and specialize in Microsoft Azure, our proficiency extends seamlessly to other public, private, and hybrid cloud environments. Elevate your operations and cost-efficiency by letting us guide your journey into the future of cloud computing.`}
                             icon={<CloudFiles />}
                         />
                         <GridItemPaper

@@ -1,14 +1,16 @@
-import React, {useEffect, useState} from 'react';
+'use client';
+
+import React from 'react';
 import {Alert, AlertTitle, Button, CircularProgress, TextField} from '@mui/material';
 import {useForm} from 'react-hook-form';
 import useContactForm, {ContactFormData} from './useContactForm';
 
-export default function ContactForm() {
-    const [hostname, setHostname] = useState('');
+type ContactFormProps = {
+    hostname: string;
+};
 
-    useEffect(() => {
-        setHostname(typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : 'salienttechconsulting.com');
-    }, []);
+export default function ContactForm(props: ContactFormProps) {
+    const {hostname} = props;
 
     const {
         register,

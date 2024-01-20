@@ -2,6 +2,9 @@
     "name": "web",
     "version": "0.0.0",
     "private": true,
+    "engines": {
+        "node": "^18.17.0"
+    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -12,6 +15,7 @@
     },
     "dependencies": {
         "@azure/identity": "^4.0.0",
+        "@emotion/cache": "^11.11.0",
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
         "@fontsource/material-icons": "^5.0.7",
@@ -19,9 +23,10 @@
         "@microsoft/microsoft-graph-client": "^3.0.7",
         "@mui/icons-material": "^5.14.14",
         "@mui/material": "^5.14.14",
+        "@mui/material-nextjs": "^5.15.5",
         "@next/bundle-analyzer": "^14.0.4",
         "jotai": "^2.5.1",
-        "next": "^13.5.5",
+        "next": "^14.1.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-hook-form": "^7.48.2"
