@@ -14,25 +14,25 @@
         "build-storybook": "storybook build"
     },
     "dependencies": {
-        "@azure/identity": "^4.0.0",
+        "@azure/identity": "^4.0.1",
         "@emotion/cache": "^11.11.0",
-        "@emotion/react": "^11.11.1",
+        "@emotion/react": "^11.11.3",
         "@emotion/styled": "^11.11.0",
-        "@fontsource/material-icons": "^5.0.7",
+        "@fontsource/material-icons": "^5.0.11",
         "@fontsource/roboto": "^5.0.8",
         "@microsoft/microsoft-graph-client": "^3.0.7",
-        "@mui/icons-material": "^5.14.14",
-        "@mui/material": "^5.14.14",
-        "@mui/material-nextjs": "^5.15.5",
-        "@next/bundle-analyzer": "^14.0.4",
-        "jotai": "^2.5.1",
+        "@mui/icons-material": "^5.15.6",
+        "@mui/material": "^5.15.6",
+        "@mui/material-nextjs": "^5.15.6",
+        "@next/bundle-analyzer": "^14.1.0",
+        "jotai": "^2.6.3",
         "next": "^14.1.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-hook-form": "^7.48.2"
+        "react-hook-form": "^7.49.3"
     },
     "devDependencies": {
-        "@babel/core": "^7.0.0",
+        "@babel/core": "^7.23.9",
         "@storybook/addon-essentials": "7.5.3",
         "@storybook/addon-interactions": "7.5.3",
         "@storybook/addon-links": "7.5.3",
@@ -42,14 +42,14 @@
         "@storybook/nextjs": "7.5.3",
         "@storybook/react": "7.5.3",
         "@storybook/testing-library": "0.2.2",
-        "@types/node": "^17.0.12",
-        "@types/react": "^18.0.22",
-        "@types/react-dom": "^18.0.7",
-        "eslint": "^8.54.0",
+        "@types/node": "^17.0.45",
+        "@types/react": "^18.2.48",
+        "@types/react-dom": "^18.2.18",
+        "eslint": "^8.56.0",
         "eslint-config-custom": "workspace:*",
         "eslint-plugin-storybook": "^0.6.15",
         "storybook": "7.5.3",
         "tsconfig": "workspace:*",
-        "typescript": "^4.5.3"
+        "typescript": "^4.9.5"
     }
 }
