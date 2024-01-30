@@ -1,0 +1,24 @@
+name: Deploy to Staging Environment
+on:
+    workflow_dispatch:
+    workflow_run:
+      branches: [develop]
+      workflows: [Continuous Integration]
+      types:
+        - completed
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy Job
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        
+      - name: Build and Deploy Static Web App
+        uses: ./.github/workflows/composite/build-and-deploy
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          deploy-token: ${{secrets.STAGING_DEPLOY_TOKEN}}
+          base-app-location: /apps/web

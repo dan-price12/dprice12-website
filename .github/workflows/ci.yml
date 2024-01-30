@@ -1,0 +1,32 @@
+name: Continuous Integration
+on:
+    workflow_dispatch:
+    push:
+        paths:
+          - 'apps/**'
+          - 'packages/**'
+          - '.github/workflows/ci.yml'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  run-ci:
+    name: Run Continuous Integration Tasks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install project dependencies
+        run: pnpm install
+
+      - name: Lint and Build Projects
+        run: pnpm lint build
