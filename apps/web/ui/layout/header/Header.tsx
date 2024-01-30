@@ -37,7 +37,7 @@ export const Header = (props: HeaderProps) => {
         setAnchorElNav(null);
     };
 
-    const handlePageNavigationClick = (_page: string) => {
+    const handlePageNavigationClick = () => {
         setAnchorElNav(null);
     };
 
@@ -45,114 +45,177 @@ export const Header = (props: HeaderProps) => {
         <AppBar position='static'>
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
-                    <Box sx={{mr: 2}}>
-                        <Link href={homePage.page} aria-label='Home'>
-                            <Logo size={LogoSize.Icon} />
-                        </Link>
-                    </Box>
-
-                    {/* XS screen size */}
-                    <Typography
-                        variant='h5'
-                        noWrap
-                        sx={{
-                            mr: 2,
-                            display: {xs: 'flex', sm: 'none'},
-                            flexGrow: 1,
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            whiteSpace: 'normal',
-                            textAlign: 'center',
-                            justifyContent: 'left'
-                        }}
-                    >
-                        <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
-                            {abbreviatedHeaderText}
-                        </Link>
-                    </Typography>
-                    {/* SM screen size */}
-                    <Typography
-                        variant='h6'
-                        noWrap
-                        sx={{
-                            mr: 2,
-                            display: {xs: 'none', sm: 'flex'},
-                            flexGrow: 1,
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            whiteSpace: 'normal',
-                            textAlign: 'center',
-                            justifyContent: 'left'
-                        }}
-                    >
-                        <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
-                            {headerText}
-                        </Link>
-                    </Typography>
-
-                    {/* XS screen size */}
-                    <Box sx={{display: {xs: 'flex', md: 'none'}}}>
-                        <IconButton
-                            size='large'
-                            aria-label='main menu'
-                            aria-controls='menu-appbar'
-                            aria-haspopup='true'
-                            onClick={handleOpenNavMenu}
-                            color='inherit'
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id='menu-appbar'
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left'
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left'
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: {xs: 'block', md: 'none'}
-                            }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page.page} onClick={() => handlePageNavigationClick(page.page)}>
-                                    <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
-                                        {page.name}
-                                    </Link>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    {/* MD screen size */}
-                    <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, justifyContent: 'right'}}>
-                        {pages.map((page) => (
-                            <Link key={page.page} href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
-                                <Button onClick={() => handlePageNavigationClick(page.page)} sx={{my: 2, color: 'white', display: 'block'}}>
-                                    {page.name}
-                                </Button>
-                            </Link>
-                        ))}
-                    </Box>
-                    <IconButton
-                        sx={{ml: 1}}
-                        onClick={onThemeModeClick}
-                        color='inherit'
-                        aria-label={themeMode === ThemeMode.Dark ? 'Light mode' : 'Dark mode'}
-                    >
-                        {themeMode === ThemeMode.Dark ? <LightMode /> : <Brightness3 />}
-                    </IconButton>
+                    <HeaderLogo homePage={homePage} />
+                    <HeaderText headerText={headerText} abbreviatedHeaderText={abbreviatedHeaderText} homePage={homePage} />
+                    <NavigationMenu
+                        anchorElNav={anchorElNav}
+                        pages={pages}
+                        handleOpenNavMenu={handleOpenNavMenu}
+                        handleCloseNavMenu={handleCloseNavMenu}
+                        handlePageNavigationClick={handlePageNavigationClick}
+                    />
+                    <ThemeModeIcon themeMode={themeMode} onThemeModeClick={onThemeModeClick} />
                 </Toolbar>
             </Container>
         </AppBar>
     );
 };
+
+type HeaderLogoProps = {
+    homePage: IPageNavigation;
+};
+
+function HeaderLogo(props: HeaderLogoProps) {
+    const {homePage} = props;
+
+    return (
+        <Box sx={{mr: 2}}>
+            <Link href={homePage.page} aria-label='Home'>
+                <Logo size={LogoSize.Icon} />
+            </Link>
+        </Box>
+    );
+}
+
+type HeaderTextProps = {
+    headerText: string;
+    abbreviatedHeaderText: string;
+    homePage: IPageNavigation;
+};
+
+function HeaderText(props: HeaderTextProps) {
+    const {headerText, abbreviatedHeaderText, homePage} = props;
+
+    return (
+        <>
+            {/* XS screen size */}
+            <Typography
+                variant='h5'
+                noWrap
+                sx={{
+                    mr: 2,
+                    display: {xs: 'flex', sm: 'none'},
+                    flexGrow: 1,
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    whiteSpace: 'normal',
+                    textAlign: 'center',
+                    justifyContent: 'left'
+                }}
+            >
+                <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                    {abbreviatedHeaderText}
+                </Link>
+            </Typography>
+            {/* SM screen size */}
+            <Typography
+                variant='h6'
+                noWrap
+                sx={{
+                    mr: 2,
+                    display: {xs: 'none', sm: 'flex'},
+                    flexGrow: 1,
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    whiteSpace: 'normal',
+                    textAlign: 'center',
+                    justifyContent: 'left'
+                }}
+            >
+                <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                    {headerText}
+                </Link>
+            </Typography>
+        </>
+    );
+}
+
+type NavigationMenuProps = {
+    anchorElNav: HTMLElement | null;
+    pages: IPageNavigation[];
+    handleOpenNavMenu: (event: React.MouseEvent<HTMLElement>) => void;
+    handleCloseNavMenu: () => void;
+    handlePageNavigationClick: () => void;
+};
+
+function NavigationMenu(props: NavigationMenuProps) {
+    const {anchorElNav, pages, handleOpenNavMenu, handleCloseNavMenu, handlePageNavigationClick} = props;
+
+    return (
+        <>
+            {/* XS screen size */}
+            <Box sx={{display: {xs: 'flex', md: 'none'}}}>
+                <IconButton
+                    size='large'
+                    aria-label='main menu'
+                    aria-controls='menu-appbar'
+                    aria-haspopup='true'
+                    onClick={handleOpenNavMenu}
+                    color='inherit'
+                >
+                    <MenuIcon />
+                </IconButton>
+                <Menu
+                    id='menu-appbar'
+                    anchorEl={anchorElNav}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left'
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left'
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                        display: {xs: 'block', md: 'none'}
+                    }}
+                >
+                    {pages.map((page) => (
+                        <MenuItem key={page.page} onClick={handlePageNavigationClick}>
+                            <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                                {page.name}
+                            </Link>
+                        </MenuItem>
+                    ))}
+                </Menu>
+            </Box>
+            {/* MD screen size */}
+            <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, justifyContent: 'right'}}>
+                {pages.map((page) => (
+                    <Link key={page.page} href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                        <Button onClick={handlePageNavigationClick} sx={{my: 2, color: 'white', display: 'block'}}>
+                            {page.name}
+                        </Button>
+                    </Link>
+                ))}
+            </Box>
+        </>
+    );
+}
+
+type ThemeModeIconProps = {
+    themeMode: ThemeMode;
+    onThemeModeClick: () => void;
+};
+
+function ThemeModeIcon(props: ThemeModeIconProps) {
+    const {themeMode, onThemeModeClick} = props;
+
+    return (
+        <IconButton
+            sx={{ml: 1}}
+            onClick={onThemeModeClick}
+            color='inherit'
+            aria-label={themeMode === ThemeMode.Dark ? 'Light mode' : 'Dark mode'}
+        >
+            {themeMode === ThemeMode.Dark ? <LightMode /> : <Brightness3 />}
+        </IconButton>
+    );
+}
