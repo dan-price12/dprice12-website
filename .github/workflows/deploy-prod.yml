@@ -1,8 +1,8 @@
-name: Deploy to Staging Environment
+name: Deploy to Production Environment
 on:
     workflow_dispatch:
     workflow_run:
-      branches: [develop]
+      branches: [main]
       workflows: [Continuous Integration]
       types:
         - completed
@@ -20,5 +20,5 @@ jobs:
         uses: ./.github/workflows/composite/build-and-deploy
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-          deploy-token: ${{secrets.STAGING_DEPLOY_TOKEN}}
+          deploy-token: ${{secrets.PROD_DEPLOY_TOKEN}}
           base-app-location: /apps/web
