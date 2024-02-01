@@ -10,6 +10,8 @@
         "dev": "turbo run dev",
         "build": "turbo run build",
         "lint": "turbo run lint",
+        "test": "turbo run test",
+        "test:coverage": "turbo run test:coverage",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
         "cypress:open": "turbo run cypress:open",
         "cypress:run": "turbo run cypress:run",

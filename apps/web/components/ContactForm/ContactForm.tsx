@@ -83,7 +83,7 @@ export default function ContactForm(props: ContactFormProps) {
                     helperText={errors.message?.message}
                 />
                 <Button type='submit' variant='contained' color='primary' disabled={loading} fullWidth>
-                    {loading ? <CircularProgress size={24} /> : 'Submit'}
+                    {loading ? <CircularProgress aria-label='loading' size={24} /> : 'Submit'}
                 </Button>
             </form>
             {showSuccessAlert && <SuccessAlert />}

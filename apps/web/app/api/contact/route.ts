@@ -9,52 +9,60 @@ function sanitizeString(input: string) {
 }
 
 export async function POST(request: Request) {
-    const requestBody: ContactFormData = await request.json();
+    try {
+        const requestBody: ContactFormData = await request.json();
 
-    const name = sanitizeString(requestBody.name);
-    const company = sanitizeString(requestBody.company ?? '');
-    const email = sanitizeString(requestBody.email);
-    const message = sanitizeString(requestBody.message);
+        const name = sanitizeString(requestBody.name);
+        const company = sanitizeString(requestBody.company ?? '');
+        const email = sanitizeString(requestBody.email);
+        const message = sanitizeString(requestBody.message);
 
-    const tenantId = process.env.TENANT_ID ?? '';
-    const clientId = process.env.CLIENT_ID ?? '';
-    const clientSecret = process.env.CLIENT_SECRET ?? '';
-    const destinationEmail = process.env.DESTINATION_EMAIL ?? '';
-    const sourceEmailId = process.env.SOURCE_EMAIL_ID ?? '';
+        const tenantId = process.env.TENANT_ID ?? '';
+        const clientId = process.env.CLIENT_ID ?? '';
+        const clientSecret = process.env.CLIENT_SECRET ?? '';
+        const destinationEmail = process.env.DESTINATION_EMAIL ?? '';
+        const sourceEmailId = process.env.SOURCE_EMAIL_ID ?? '';
 
-    const credential = new ClientSecretCredential(tenantId, clientId, clientSecret);
+        const credential = new ClientSecretCredential(tenantId, clientId, clientSecret);
 
-    const authProvider = new TokenCredentialAuthenticationProvider(credential, {
-        scopes: ['https://graph.microsoft.com/.default']
-    });
+        const authProvider = new TokenCredentialAuthenticationProvider(credential, {
+            scopes: ['https://graph.microsoft.com/.default']
+        });
 
-    const graphClient = Client.initWithMiddleware({
-        authProvider: authProvider
-    });
+        const graphClient = Client.initWithMiddleware({
+            authProvider: authProvider
+        });
 
-    const sendMail = {
-        message: {
-            subject: `New Contact Form Submission - ${name}`,
-            body: {
-                contentType: 'Text',
-                content: `New Contact Request:
+        const sendMail = {
+            message: {
+                subject: `New Contact Form Submission - ${name}`,
+                body: {
+                    contentType: 'Text',
+                    content: `New Contact Request:
 Name: ${name}
 Company: ${company}
 Email: ${email}
 Message: ${message}`
-            },
-            toRecipients: [
-                {
-                    emailAddress: {
-                        address: destinationEmail
+                },
+                toRecipients: [
+                    {
+                        emailAddress: {
+                            address: destinationEmail
+                        }
                     }
-                }
-            ]
-        },
-        saveToSentItems: 'false'
-    };
+                ]
+            },
+            saveToSentItems: 'false'
+        };
 
-    await graphClient.api(`/users/${sourceEmailId}/sendMail`).post(sendMail);
+        const result = await graphClient.api(`/users/${sourceEmailId}/sendMail`).post(sendMail);
 
-    return new Response(null, {status: 200});
+        if (!result.ok) {
+            return new Response('', {status: 502});
+        }
+
+        return new Response(null, {status: 200});
+    } catch {
+        return new Response(null, {status: 500});
+    }
 }

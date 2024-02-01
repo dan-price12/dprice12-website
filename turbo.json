@@ -24,6 +24,9 @@
             "cache": false,
             "dependsOn": ["^build"],
             "outputs": []
+        },
+        "test": {
+            "cache": false
         }
     }
 }

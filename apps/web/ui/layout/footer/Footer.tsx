@@ -6,34 +6,6 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import {IPageNavigation} from '../interfaces/IPageNavigation';
 
-type FooterLinkProps = {
-    page: IPageNavigation;
-};
-
-const FooterLink = (props: FooterLinkProps) => {
-    const {page} = props;
-
-    return (
-        <Typography
-            variant='caption'
-            sx={{
-                flexGrow: 1,
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                whiteSpace: 'normal',
-                textAlign: 'center',
-                justifyContent: 'center'
-            }}
-        >
-            <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
-                {` | ${page.name}`}
-            </Link>
-        </Typography>
-    );
-};
-
 type FooterProps = {
     footerText: string;
     pages: IPageNavigation[];
@@ -68,5 +40,33 @@ export const Footer = (props: FooterProps) => {
                 </Toolbar>
             </Container>
         </AppBar>
+    );
+};
+
+type FooterLinkProps = {
+    page: IPageNavigation;
+};
+
+const FooterLink = (props: FooterLinkProps) => {
+    const {page} = props;
+
+    return (
+        <Typography
+            variant='caption'
+            sx={{
+                flexGrow: 1,
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+                whiteSpace: 'normal',
+                textAlign: 'center',
+                justifyContent: 'center'
+            }}
+        >
+            <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                {` | ${page.name}`}
+            </Link>
+        </Typography>
     );
 };
