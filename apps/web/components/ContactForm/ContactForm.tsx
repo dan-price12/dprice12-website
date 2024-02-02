@@ -25,7 +25,7 @@ export default function ContactForm(props: ContactFormProps) {
 
     const SuccessAlert = () => {
         return (
-            <Alert severity='success' sx={{mt: 2}}>
+            <Alert severity='success' sx={{mt: 2}} data-cy='alert-contact-success'>
                 <AlertTitle>Success</AlertTitle>
                 {`Your contact information was successfully received — we will reach out to you shortly.`}
             </Alert>
@@ -34,7 +34,7 @@ export default function ContactForm(props: ContactFormProps) {
 
     const ErrorAlert = () => {
         return (
-            <Alert severity='error' sx={{mt: 2}}>
+            <Alert severity='error' sx={{mt: 2}} data-cy='alert-contact-error'>
                 <AlertTitle>Error</AlertTitle>
                 {`There was an error processing your contact information — please try again or email us directly at `}
                 <a href={`mailto:info@${hostname}`} style={{color: 'inherit'}}>
@@ -55,8 +55,9 @@ export default function ContactForm(props: ContactFormProps) {
                     {...register('name', {required: 'Name is required'})}
                     error={!!errors.name}
                     helperText={errors.name?.message}
+                    data-cy='input-text-contact-name'
                 />
-                <TextField fullWidth margin='normal' label='Company' {...register('company', {})} />
+                <TextField fullWidth margin='normal' label='Company' {...register('company', {})} data-cy='input-text-contact-company' />
                 <TextField
                     fullWidth
                     margin='normal'
@@ -71,6 +72,7 @@ export default function ContactForm(props: ContactFormProps) {
                     })}
                     error={!!errors.email}
                     helperText={errors.email?.message}
+                    data-cy='input-text-contact-email'
                 />
                 <TextField
                     fullWidth
@@ -81,9 +83,10 @@ export default function ContactForm(props: ContactFormProps) {
                     {...register('message', {required: 'Message is required'})}
                     error={!!errors.message}
                     helperText={errors.message?.message}
+                    data-cy='input-text-contact-message'
                 />
-                <Button type='submit' variant='contained' color='primary' disabled={loading} fullWidth>
-                    {loading ? <CircularProgress aria-label='loading' size={24} /> : 'Submit'}
+                <Button type='submit' variant='contained' color='primary' disabled={loading} fullWidth data-cy='button-contact-submit'>
+                    {loading ? <CircularProgress aria-label='loading' size={24} data-cy='icon-contact-loading' /> : 'Submit'}
                 </Button>
             </form>
             {showSuccessAlert && <SuccessAlert />}

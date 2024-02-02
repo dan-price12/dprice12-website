@@ -26,8 +26,14 @@ jobs:
           node-version: 18
           cache: 'pnpm'
 
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - name: Install project dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Lint and Build Projects
         run: pnpm lint build test

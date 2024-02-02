@@ -33,8 +33,8 @@ export const Footer = (props: FooterProps) => {
                         }}
                     >
                         {footerText}
-                        {pages.map((page) => {
-                            return <FooterLink key={page.name} page={page} />;
+                        {pages.map((page, index) => {
+                            return <FooterLink key={page.name} page={page} index={index} />;
                         })}
                     </Typography>
                 </Toolbar>
@@ -45,10 +45,11 @@ export const Footer = (props: FooterProps) => {
 
 type FooterLinkProps = {
     page: IPageNavigation;
+    index: number;
 };
 
 const FooterLink = (props: FooterLinkProps) => {
-    const {page} = props;
+    const {page, index} = props;
 
     return (
         <Typography
@@ -64,7 +65,7 @@ const FooterLink = (props: FooterLinkProps) => {
                 justifyContent: 'center'
             }}
         >
-            <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+            <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}} data-cy={`link-footer-item-${index}`}>
                 {` | ${page.name}`}
             </Link>
         </Typography>

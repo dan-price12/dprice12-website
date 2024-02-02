@@ -448,6 +448,7 @@ tsconfig.tsbuildinfo
 # auto-generated vite timestamp file
 vite.config.ts.timestamp-*.mjs
 
-# cypress screenshots and videos
+# cypress screenshots, videos, and downloads
 screenshots/
 videos/
+downloads/

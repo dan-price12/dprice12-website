@@ -1,0 +1,24 @@
+name: Run Production End-to-End Tests
+on:
+    workflow_dispatch:
+    workflow_run:
+      workflows: [Deploy to Production Environment]
+      types:
+        - completed
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+env:
+  TESTING_ENVIRONMENT: 'www'
+
+jobs:
+  run-e2e:
+    name: Run End-to-End Tests
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        
+      - name: Run E2E Tests
+        uses: ./.github/workflows/composite/run-e2e-tests

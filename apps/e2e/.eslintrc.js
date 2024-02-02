@@ -1,4 +1,4 @@
 module.exports = {
-  root: true,
-  extends: ['custom', 'plugin:cypress/recommended']
+    root: true,
+    extends: ['custom', 'plugin:cypress/recommended']
 };

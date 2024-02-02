@@ -42,7 +42,7 @@ export const Header = (props: HeaderProps) => {
     };
 
     return (
-        <AppBar position='static'>
+        <AppBar position='static' data-cy='app-bar-header'>
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
                     <HeaderLogo homePage={homePage} />
@@ -70,7 +70,7 @@ function HeaderLogo(props: HeaderLogoProps) {
 
     return (
         <Box sx={{mr: 2}}>
-            <Link href={homePage.page} aria-label='Home'>
+            <Link href={homePage.page} aria-label='Home' data-cy='link-header-logo'>
                 <Logo size={LogoSize.Icon} />
             </Link>
         </Box>
@@ -105,7 +105,11 @@ function HeaderText(props: HeaderTextProps) {
                     justifyContent: 'left'
                 }}
             >
-                <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                <Link
+                    href={homePage.page}
+                    style={{textDecoration: 'inherit', color: 'inherit'}}
+                    data-cy='link-header-xs-abbreviatedHeaderText'
+                >
                     {abbreviatedHeaderText}
                 </Link>
             </Typography>
@@ -126,7 +130,7 @@ function HeaderText(props: HeaderTextProps) {
                     justifyContent: 'left'
                 }}
             >
-                <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                <Link href={homePage.page} style={{textDecoration: 'inherit', color: 'inherit'}} data-cy='link-header-sm-headerText'>
                     {headerText}
                 </Link>
             </Typography>
@@ -156,6 +160,7 @@ function NavigationMenu(props: NavigationMenuProps) {
                     aria-haspopup='true'
                     onClick={handleOpenNavMenu}
                     color='inherit'
+                    data-cy='button-header-xs-menu'
                 >
                     <MenuIcon />
                 </IconButton>
@@ -177,8 +182,8 @@ function NavigationMenu(props: NavigationMenuProps) {
                         display: {xs: 'block', md: 'none'}
                     }}
                 >
-                    {pages.map((page) => (
-                        <MenuItem key={page.page} onClick={handlePageNavigationClick}>
+                    {pages.map((page, index) => (
+                        <MenuItem key={page.page} onClick={handlePageNavigationClick} data-cy={`button-header-xs-menu-item-${index}`}>
                             <Link href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
                                 {page.name}
                             </Link>
@@ -188,9 +193,13 @@ function NavigationMenu(props: NavigationMenuProps) {
             </Box>
             {/* MD screen size */}
             <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, justifyContent: 'right'}}>
-                {pages.map((page) => (
+                {pages.map((page, index) => (
                     <Link key={page.page} href={page.page} style={{textDecoration: 'inherit', color: 'inherit'}}>
-                        <Button onClick={handlePageNavigationClick} sx={{my: 2, color: 'white', display: 'block'}}>
+                        <Button
+                            onClick={handlePageNavigationClick}
+                            sx={{my: 2, color: 'white', display: 'block'}}
+                            data-cy={`button-header-md-menu-item-${index}`}
+                        >
                             {page.name}
                         </Button>
                     </Link>
@@ -214,6 +223,7 @@ function ThemeModeIcon(props: ThemeModeIconProps) {
             onClick={onThemeModeClick}
             color='inherit'
             aria-label={themeMode === ThemeMode.Dark ? 'Light mode' : 'Dark mode'}
+            data-cy='button-header-theme-mode'
         >
             {themeMode === ThemeMode.Dark ? <LightMode /> : <Brightness3 />}
         </IconButton>

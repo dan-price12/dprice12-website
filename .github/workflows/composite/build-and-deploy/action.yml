@@ -22,7 +22,7 @@ runs:
       id: builddeploy
       uses: Azure/static-web-apps-deploy@v1
       env:
-        PRE_BUILD_COMMAND: npm install -g pnpm && pnpm install
+        PRE_BUILD_COMMAND: npm install -g pnpm && pnpm install --frozen-lockfile
         CUSTOM_BUILD_COMMAND: pnpm run build && cp -r .next/standalone${{ inputs.base-app-location }}/. .next/standalone
         VERBOSE: true
       with:

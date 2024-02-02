@@ -1,0 +1,38 @@
+name: Run E2E Tests
+description: "Runs End-to-End Tests"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check out the repo
+      uses: actions/checkout@v4
+        
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'pnpm'
+
+    - name: Cache Cypress binary
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/Cypress
+        key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/pnpm-lock.yaml') }}
+        
+    - name: Install project dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    - name: Run e2e tests
+      shell: bash
+      run: pnpm cypress:run
+      
+    - name: Upload screenshots
+      uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: screenshots
+        path: apps/e2e/cypress/screenshots
