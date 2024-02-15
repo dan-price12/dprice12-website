@@ -23,3 +23,4 @@ This project is organized into the following structure:
 -   `storage`: Jotai Atom definitions
 -   `stories`: [Storybook](https://storybook.js.org/) stories
 -   `ui`: Reusable React.JS components. Should be extracted to its own `package` in the monorepo in the future.
+-   `utils`: Reusable utility functions

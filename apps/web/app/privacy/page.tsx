@@ -4,6 +4,7 @@ import {Metadata} from 'next';
 import {headers} from 'next/headers';
 import {PrivacyPolicyBodyHeaderTypography, PrivacyPolicyBodyTypography} from '../../components/Typographies/PrivacyPolicyBodyTypography';
 import {SubHeader} from '../../ui/page-elements/subheader/SubHeader';
+import removeSubdomain from '../utils/removeSubdomain';
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
     const headersList = headers();
-    const hostname = headersList.get('host') ?? 'salienttechconsulting.com';
+    const hostname = removeSubdomain(headersList.get('x-forwarded-host') ?? 'salienttechconsulting.com');
 
     const headerText = 'Privacy Policy';
     const headerSubText = 'Salient Technology Consulting LLC Privacy Policy';
@@ -27,7 +28,7 @@ export default function PrivacyPolicy() {
                         {`
 Effective Date: December 04, 2023
 
-Thank you for visiting www.${hostname}. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our website or services.
+Thank you for visiting ${hostname}. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our website or services.
 
 `}
                     </PrivacyPolicyBodyTypography>

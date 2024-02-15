@@ -1,6 +1,6 @@
 import {Client} from '@microsoft/microsoft-graph-client';
 import {Response, Headers, Request} from 'whatwg-fetch';
-import {POST} from '../../app/api/contact/route';
+import {POST} from './route';
 
 global.Response = Response;
 global.Headers = Headers;
@@ -18,9 +18,14 @@ describe('/api/contact', () => {
     const destinationEmail = 'destinationEmail';
 
     let postSpy: jest.Mock;
-    const apiSpy = jest.fn().mockImplementation(() => {
+    const responseTypeSpy = jest.fn().mockImplementation(() => {
         return {
             post: postSpy
+        };
+    });
+    const apiSpy = jest.fn().mockImplementation(() => {
+        return {
+            responseType: responseTypeSpy
         };
     });
     const clientSpy = jest.fn().mockImplementation(() => {

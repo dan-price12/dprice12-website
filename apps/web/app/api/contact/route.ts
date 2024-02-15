@@ -1,5 +1,5 @@
 import {ClientSecretCredential} from '@azure/identity';
-import {Client} from '@microsoft/microsoft-graph-client';
+import {Client, ResponseType} from '@microsoft/microsoft-graph-client';
 import {TokenCredentialAuthenticationProvider} from '@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials';
 import {ContactFormData} from '../../../components/ContactForm/useContactForm';
 
@@ -55,10 +55,10 @@ Message: ${message}`
             saveToSentItems: 'false'
         };
 
-        const result = await graphClient.api(`/users/${sourceEmailId}/sendMail`).post(sendMail);
+        const result = await graphClient.api(`/users/${sourceEmailId}/sendMail`).responseType(ResponseType.RAW).post(sendMail);
 
         if (!result.ok) {
-            return new Response('', {status: 502});
+            return new Response(null, {status: 502});
         }
 
         return new Response(null, {status: 200});
