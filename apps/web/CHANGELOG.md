@@ -1,5 +1,11 @@
 # web
 
+## 0.1.2
+
+### Patch Changes
+
+- 3f6fef6: Update contact form - fix showing error when email is successful, co-locate contact route and test, fix hostname
+
 ## 0.1.1
 
 ### Patch Changes
