@@ -1,5 +1,18 @@
 # web
 
+## 0.1.2
+
+### Patch Changes
+
+- 3f6fef6: Update contact form - fix showing error when email is successful, co-locate contact route and test, fix hostname
+
+## 0.1.1
+
+### Patch Changes
+
+- 4c25d8e: Added Cypress tests
+- 9f3bf1f: Add Jest Tests
+
 ## 0.1.0
 
 ### Minor Changes

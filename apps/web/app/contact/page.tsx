@@ -4,6 +4,7 @@ import {Metadata} from 'next';
 import {headers} from 'next/headers';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import {SubHeader} from '../../ui/page-elements/subheader/SubHeader';
+import removeSubdomain from '../utils/removeSubdomain';
 
 export const metadata: Metadata = {
     title: 'Contact Us',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function Contact() {
     const headersList = headers();
-    const hostname = headersList.get('host') ?? 'salienttechconsulting.com';
+    const hostname = removeSubdomain(headersList.get('x-forwarded-host') ?? 'salienttechconsulting.com');
 
     const headerText = 'Contact Us';
     const headerSubText = 'Connect with us today';
